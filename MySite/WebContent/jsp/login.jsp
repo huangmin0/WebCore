@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 <form name="forml" method="post" action="loginReceive.jsp">
-姓名
+<span>用户名:</span>
 <input name="userName" type="text" size="12">
 <br/>
-密码
+<span>密&nbsp;码:</span>
 <input name="passWord" type="password" size="12">
 <br/>
 <input type="submit" name="Submit" value="提交">

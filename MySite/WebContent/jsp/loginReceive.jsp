@@ -1,3 +1,4 @@
+<%@page import="sun.security.util.Password"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,19 +6,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 	<%
 		String Name = request.getParameter("userName");
 		String Pwd = request.getParameter("passWord");
-		if (Name.equals("HuangMin") && Pwd.equals("123456"))
+		if (null!=Name&&null!=Pwd&&"HuangMin".equals(Name) && "123456".equals(Pwd))
 		{
+			response.setHeader("refresh", "3;url=loginCorrect.jsp");
+			session.setAttribute("userid",Name);
+			
 	%>
-	<jsp:forward page="loginCorrect.html" />
+	<h1>登录成功，3秒后跳转到登录成功页面</h1>
+		<h3>
+			如果没有跳转成功请点击<a href="loginCorrect.jsp">这里</a>请手动跳转
+		</h3>
 	<%
-		} else
+		} else{
 	%>
-	<jsp:forward page="loginError.html" />
+	<h1>登录失败请重新<a href="login.jsp">登录</a>用户名或密码错误</h1>
+	<h1>3秒后将重新进入登录页面<% response.setHeader("refresh", "3;url=login.jsp"); %></h1>
+	<%
+		}
+	%>
 </body>
 </html>
